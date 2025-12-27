@@ -14,7 +14,14 @@ app = Flask(__name__)
 app.secret_key = SECRET_KEY
 
 # Initialize database
-init_db()
+try:
+    init_db()
+except Exception as e:
+    import sys
+    print(f"Failed to initialize database: {e}", file=sys.stderr)
+    # In production, we want to fail fast if DB can't be initialized
+    if not DEBUG:
+        raise
 
 # Register blueprints
 app.register_blueprint(auth_bp)
