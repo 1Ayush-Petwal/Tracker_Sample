@@ -3,8 +3,8 @@ Configuration file for the Expense Tracker application
 """
 import os
 
-# Database configuration
-DB = os.getenv("DATABASE_URL", "expenses.db")
+# Database configuration - use DB_PATH to avoid conflict with Railway's DATABASE_URL
+DB = os.getenv("DB_PATH", "expenses.db")
 
 # Secret key - use environment variable in production
 SECRET_KEY = os.getenv("SECRET_KEY", "supersecretkey")
