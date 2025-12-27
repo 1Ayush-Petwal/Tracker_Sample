@@ -2,12 +2,18 @@
 Database initialization and operations
 """
 import sqlite3
+import os
 from config import DB
 
 
 def init_db():
     """Initialize the database with required tables"""
-    conn = sqlite3.connect(DB)
+    # Ensure directory exists for database file
+    db_path = DB
+    if "/" in db_path or "\\" in db_path:
+        os.makedirs(os.path.dirname(db_path), exist_ok=True)
+    
+    conn = sqlite3.connect(db_path)
     c = conn.cursor()
     
     # Users table with savings_goal
