@@ -22,6 +22,11 @@ app.register_blueprint(dashboard_bp)
 app.register_blueprint(profile_bp)
 app.register_blueprint(split_bp)
 
+@app.route("/")
+def health():
+    return "OK", 200
+
+
 if __name__ == "__main__":
     app.run(debug=DEBUG, host=HOST, port=PORT)
 
