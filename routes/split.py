@@ -50,13 +50,13 @@ def add_split():
     conn = get_db_connection()
     c = conn.cursor()
     c.execute("INSERT INTO split(user_id,title,amount,payer,participants) VALUES(?,?,?,?,?)",
-              (uid, title, amount, payer, participants))
+            (uid, title, amount, payer, participants))
     
     people = [p.strip() for p in participants.split(",")]
     share = amount / len(people)
     # Add split portion to personal expenses
     c.execute("INSERT INTO personal(user_id,title,amount,category) VALUES(?,?,?,?)",
-              (uid, f"{title} (Split Paid)", share, "Split"))
+            (uid, f"{title} (Split Paid)", share, "Split"))
     
     conn.commit()
     conn.close()

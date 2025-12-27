@@ -543,20 +543,20 @@ canvas{
 <div class="container">
 
 <div class="card">
-<h3>Add Split Expense</h3>
-<form method="post" action="/add_split">
-<input name="title" placeholder="Title" required>
+  <h3>Add Split Expense</h3>
+  <form method="post" action="/add_split">
+    <input name="title" placeholder="Title" required>
+    <div class="rupee-box">
+      <span>₹</span>
+      <input name="amount" type="number" class="rupee-input" placeholder="Total Amount" required>
+    </div>
 
-<div class="rupee-box">
-<span>₹</span>
-<input name="amount" type="number" class="rupee-input" placeholder="Total Amount" required>
-</div>
+    <input name="payer" placeholder="Paid By" required>
+    <input name="participants" placeholder="Participants (comma separated)" required>
+    <input name="Email" placeholder="Email (comma separated)" required>
 
-<input name="payer" placeholder="Paid By" required>
-<input name="participants" placeholder="Participants (comma separated)" required>
-
-<button>Add Split</button>
-</form>
+    <button>Add Split</button>
+  </form>
 </div>
 
 <div class="card center">

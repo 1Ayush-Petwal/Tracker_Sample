@@ -32,6 +32,13 @@ def login():
                 conn.close()
                 return "Invalid password"
         else:
+            # Check if username already exists before attempting registration
+            c.execute("SELECT id FROM users WHERE username=?", (username,))
+            existing_username = c.fetchone()
+            if existing_username:
+                conn.close()
+                return "Username already taken"
+            
             if not is_strong_password(password):
                 conn.close()
                 return "Password not strong enough"
