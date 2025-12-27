@@ -112,7 +112,7 @@ def add_personal():
     conn = get_db_connection()
     c = conn.cursor()
     c.execute("INSERT INTO personal(user_id,title,amount,category) VALUES(?,?,?,?)",
-              (uid, title, amount, category))
+            (uid, title, amount, category))
     conn.commit()
     conn.close()
     return redirect("/home")
